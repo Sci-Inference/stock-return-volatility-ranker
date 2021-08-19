@@ -22,11 +22,14 @@ with open("README.md", "r") as fh:
 setup(
     name='time_series_transform',
     version='1.1.3',
-    description = 'A data preprocessing package for time series data. It provides tools for machine learing and deep learning.It also has subsection specialized in stock.',
+    description = 'Implementation of various learning to rank neural network',
     packages=[
         'stock_rv_ranker',
         'stock_rv_ranker/layers',
-        'stock_rv_ranker/losses'
+        'stock_rv_ranker/losses',
+        'stock_rv_ranker/metrics',
+        'stock_rv_ranker/utils',
+        'stock_rv_ranker/test'
         ],
     license='MIT',
     author_email = 'kuanlun.chiang@outlook.com',
