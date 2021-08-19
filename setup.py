@@ -29,7 +29,8 @@ setup(
         'stock_rv_ranker/losses',
         'stock_rv_ranker/metrics',
         'stock_rv_ranker/utils',
-        'stock_rv_ranker/test'
+        'stock_rv_ranker/test',
+        'stock-rv_ranker/model'
         ],
     license='MIT',
     author_email = 'kuanlun.chiang@outlook.com',
