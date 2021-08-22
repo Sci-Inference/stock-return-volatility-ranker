@@ -5,8 +5,6 @@ from tensorflow.keras import layers, Model, Input
 
 
 
-
-
 class RankNet_Head(Model):
     def __init__(self,process_activation='linear',output_activation = 'sigmoid'):
         super().__init__()
