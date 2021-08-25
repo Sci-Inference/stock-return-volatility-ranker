@@ -19,3 +19,6 @@ class RankNet_Head(Model):
         oij = self.oi_minus_oj([oi, oj])
         output = layers.Activation(self.activation)(oij)
         return output
+
+
+
