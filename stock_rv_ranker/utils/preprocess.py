@@ -65,4 +65,13 @@ class Batch_Dataset(object):
             xj.append(query_xj)
             y.extend(query_y)
             indexList.extend(query_lid)
-        return np.concatenate(xi,0),np.concatenate(xj,0),np.array(y,0),indexList
+        return np.concatenate(xi,0),np.concatenate(xj,0),np.array(y),indexList
+
+
+
+    def create_sequence_numpy_generator(self,data:pd.DataFrame,featureList:list,DateCol:str = 'Date',indexCol:str = 'symbol',targetCol='profit'):
+        dateList = data[DateCol].unique()
+        for i in dateList:
+            tdd = data[data['Date'] == i].set_index(indexCol)
+            query_xi,query_xj,query_y,query_lid = rank_to_score_sequence(tdd.to_dict('index'),tdd.index.unique(),featureList,targetCol)
+            yield query_xi,query_xj,query_y,query_lid
