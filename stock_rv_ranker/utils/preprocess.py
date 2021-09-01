@@ -11,7 +11,8 @@ def rank_to_score_sequence(data:dict,symbolList:list,featureList:list,targetCol:
     for i in list(combinations(symbolList,2)):
         xi.append(np.stack([np.array(data[i[0]][j]) for j in featureList],axis =-1))
         xj.append(np.stack(([np.array(data[i[1]][j]) for j in featureList]),axis =-1))
-        y.append((1 if data[i[0]][targetCol] > data[i[1]][targetCol] else 0))
+        if targetCol is not None:
+            y.append((1 if data[i[0]][targetCol] > data[i[1]][targetCol] else 0))
         indexList.append(i)
     return np.stack(xi,0),np.stack(xj,0),np.array(y),indexList
 
@@ -25,7 +26,8 @@ def rank_to_score(data:dict,symbolList:list,featureList:list,targetCol:str):
     for i in list(combinations(symbolList,2)):
         xi.append([data[i[0]][j] for j in featureList])
         xj.append([data[i[1]][j] for j in featureList])
-        y.append(1 if data[i[0]][targetCol] > data[i[1]][targetCol] else 0)
+        if targetCol is not None:
+            y.append(1 if data[i[0]][targetCol] > data[i[1]][targetCol] else 0)
         indexList.append(i)
     return np.array(xi),np.array(xj),np.array(y),indexList
 
